@@ -27,6 +27,7 @@ const SignUp = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(form),
+          credentials: true,
         }
       );
       if (!res.ok) {

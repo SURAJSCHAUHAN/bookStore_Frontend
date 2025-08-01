@@ -42,14 +42,17 @@ const Books = () => {
 
   const updateBook = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/books/update/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
-        credentials: "include",
-      });
+      const res = await fetch(
+        `https://book-store-backend-suraj.vercel.app/api/books/update/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedData),
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
 
@@ -64,10 +67,13 @@ const Books = () => {
 
   const deleteBook = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/books/delete/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
+      const res = await fetch(
+        `https://book-store-backend-suraj.vercel.app/api/books/delete/${id}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
 

@@ -25,7 +25,7 @@ const Login = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(form),
-          credentials: "include",
+          credentials: true,
         }
       );
       if (!res.ok) {
