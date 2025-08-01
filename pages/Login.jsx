@@ -17,14 +17,17 @@ const Login = () => {
   const handleLogin = async () => {
     console.log("Form Data", form);
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://book-store-backend-suraj.vercel.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+          credentials: "include",
+        }
+      );
       if (!res.ok) {
         console.log(res);
         throw new Error("Login Failed");

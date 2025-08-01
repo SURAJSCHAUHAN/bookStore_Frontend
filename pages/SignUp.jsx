@@ -19,13 +19,16 @@ const SignUp = () => {
   const handleSignUp = async () => {
     console.log("Form Data", form);
     try {
-      const res = await fetch("http://localhost:3000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        "https://book-store-backend-suraj.vercel.app/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
       if (!res.ok) {
         throw new Error("SignUp Failed");
       }

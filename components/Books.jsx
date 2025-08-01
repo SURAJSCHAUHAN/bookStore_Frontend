@@ -21,10 +21,13 @@ const Books = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/books/get", {
-        method: "GET",
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://book-store-backend-suraj.vercel.app/api/books/get",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
 
       if (!res.ok) throw new Error("Unauthorized or something went wrong");
 

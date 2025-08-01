@@ -13,10 +13,13 @@ const Home = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/auth/check", {
-          method: "GET",
-          credentials: "include",
-        });
+        const res = await fetch(
+          "https://book-store-backend-suraj.vercel.app/api/auth/check",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
         if (!res.ok) throw new Error("Not authorized");
 
@@ -34,10 +37,13 @@ const Home = () => {
 
   const logout = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/logout", {
-        method: "POST",
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://book-store-backend-suraj.vercel.app/api/auth/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.msg || "Logout failed");
@@ -55,14 +61,17 @@ const Home = () => {
 
   const addBook = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/books/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://book-store-backend-suraj.vercel.app/api/books/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) throw new Error("Book Add failed");
