@@ -18,9 +18,9 @@ export const BookDescription = () => {
 
       if (!res.ok) throw new Error("Unauthorized or something went wrong");
 
-      const book = await res.json();
-      setBook(book.data);
-      console.log(book);
+      const bookDes = await res.json();
+      setBook(bookDes.data);
+      console.log(bookDes.data);
     } catch (err) {
       console.error("Failed to fetch Books", err);
     }
