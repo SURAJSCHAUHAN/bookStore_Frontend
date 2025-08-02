@@ -33,7 +33,7 @@ const Books = () => {
 
       const book = await res.json();
       setBooks(book.data);
-      setUser(book.userInfo.role);
+      setUser(book.userInfo?.role);
       console.log(book);
     } catch (err) {
       console.error("Failed to fetch Books", err);
