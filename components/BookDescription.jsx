@@ -2,7 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const BookDescription = () => {
-  const [book, setBook] = useState();
+  const [book, setBook] = useState({
+    _id: "688db7e956b9db8045543e81",
+    title: "The God of Small Things",
+    author: "Arundhati Roy",
+    year: 1997,
+    photo:
+      "https://m.media-amazon.com/images/I/91saO95VziL._UF1000,1000_QL80_.jpg",
+    createdAt: "2025-08-02T07:00:22.777Z",
+    __v: 0,
+    description:
+      "A Booker Prize-winning novel exploring family, caste, and forbidden love in Kerala.",
+  });
   const { id } = useParams();
 
   const fetchBookDetails = async () => {
@@ -30,18 +41,29 @@ export const BookDescription = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="h-[100vh] w-[100vw] justify-center items-center bg-gray-300 p-10">
       {book ? (
-        <div className="w-[100vw]">
-          <div className="w-[30%]">
-            {" "}
-            <img src={book.photo} alt="book_img" />{" "}
+        <div className=" flex h-[90vh] w-[100%]  gap-10">
+          <div>
+            <img
+              src={book.photo}
+              alt="book_img"
+              className="h-[100%] w-[100%] z-10 rounded-xl"
+            />
           </div>
-          <div className="w-[70%]">
-            <h1>{book.title}</h1>
-            <p>{book.author}</p>
-            <p>{book.year}</p>
-            <p>{book.description}</p>
+          <div className="w-[70%] text-2xl font-mono">
+            <h1>
+              Title: <span className="font-bold">{book.title}</span>
+            </h1>
+            <p>
+              Author: <span className="font-bold">{book.author}</span>
+            </p>
+            <p>
+              Year: <span className="font-bold">{book.year}</span>
+            </p>
+            <p>
+              Description: <span className="font-bold">{book.description}</span>
+            </p>
           </div>
         </div>
       ) : (

@@ -162,7 +162,7 @@ const Home = () => {
             <textarea
               name="description"
               placeholder="Book Description"
-              className="p-2 border rounded-lg h-28 resize-none"
+              className="p-2 border rounded-lg h-28 w-[70%] resize-none"
               value={form.description}
               onChange={handleChange}
               required
