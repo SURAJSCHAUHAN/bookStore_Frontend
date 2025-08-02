@@ -32,11 +32,17 @@ export const BookDescription = () => {
   return (
     <div>
       {book ? (
-        <div>
-          <h1>{book.title}</h1>
-          <p>{book.author}</p>
-          <p>{book.year}</p>
-          <p>{book.description}</p>
+        <div className="w-[100vw]">
+          <div className="w-[30%]">
+            {" "}
+            <img src={book.photo} alt="book_img" />{" "}
+          </div>
+          <div className="w-[70%]">
+            <h1>{book.title}</h1>
+            <p>{book.author}</p>
+            <p>{book.year}</p>
+            <p>{book.description}</p>
+          </div>
         </div>
       ) : (
         <p>Loading...</p>

@@ -159,6 +159,15 @@ const Home = () => {
               className="w-full mb-4 p-2 border rounded"
             />
 
+            <textarea
+              name="description"
+              placeholder="Book Description"
+              className="p-2 border rounded-lg h-28 resize-none"
+              value={form.description}
+              onChange={handleChange}
+              required
+            ></textarea>
+
             <div className="flex justify-end gap-4">
               <button
                 onClick={() => setShowModal(false)}
