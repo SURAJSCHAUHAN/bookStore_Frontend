@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -17,17 +18,14 @@ const Login = () => {
   const handleLogin = async () => {
     console.log("Form Data", form);
     try {
-      const res = await fetch(
-        "https://book-store-backend-suraj.vercel.app/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`${API_BASE}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+        credentials: "include",
+      });
       if (!res.ok) {
         console.log(res);
         throw new Error("Login Failed");

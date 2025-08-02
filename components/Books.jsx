@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Pencil, Trash2, Eye } from "lucide-react";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const Books = () => {
   const [user, setUser] = useState();
@@ -12,6 +13,8 @@ const Books = () => {
     title: "",
     author: "",
     year: "",
+    description: "",
+    photo: "",
   });
 
   const handleEditClick = (book) => {
@@ -21,13 +24,10 @@ const Books = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await fetch(
-        "https://book-store-backend-suraj.vercel.app/api/books/get",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`${API_BASE}/books/get`, {
+        method: "GET",
+        credentials: "include",
+      });
 
       if (!res.ok) throw new Error("Unauthorized or something went wrong");
 
@@ -42,17 +42,14 @@ const Books = () => {
 
   const updateBook = async (id) => {
     try {
-      const res = await fetch(
-        `https://book-store-backend-suraj.vercel.app/api/books/update/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedData),
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`${API_BASE}/books/update/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+        credentials: "include",
+      });
 
       const data = await res.json();
 
@@ -67,13 +64,10 @@ const Books = () => {
 
   const deleteBook = async (id) => {
     try {
-      const res = await fetch(
-        `https://book-store-backend-suraj.vercel.app/api/books/delete/${id}`,
-        {
-          method: "DELETE",
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`${API_BASE}/books/delete/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
 
       const data = await res.json();
 
@@ -210,6 +204,30 @@ const Books = () => {
                 }
                 required
               />
+              <input
+                type="text"
+                name="photo"
+                value={updatedData.photo}
+                onChange={(e) =>
+                  setUpdatedData({ ...updatedData, photo: e.target.value })
+                }
+                required
+                className="w-full mb-4 p-2 border rounded"
+              />
+
+              <textarea
+                name="description"
+                placeholder="Book Description"
+                className="p-2 border rounded-lg h-28 w-[70%] resize-none"
+                value={updatedData.description}
+                onChange={(e) =>
+                  setUpdatedData({
+                    ...updatedData,
+                    description: e.target.value,
+                  })
+                }
+                required
+              ></textarea>
               <div className="flex justify-end gap-4">
                 <button
                   type="button"
