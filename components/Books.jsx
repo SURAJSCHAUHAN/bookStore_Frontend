@@ -90,6 +90,8 @@ const Books = () => {
         title: selectedBook.title,
         author: selectedBook.author,
         year: selectedBook.year,
+        photo: selectedBook.photo,
+        description: selectedBook.description,
       });
     }
   }, [selectedBook]);
@@ -228,6 +230,7 @@ const Books = () => {
                 }
                 required
               ></textarea>
+
               <div className="flex justify-end gap-4">
                 <button
                   type="button"

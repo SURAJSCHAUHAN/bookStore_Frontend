@@ -2,18 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const BookDescription = () => {
-  const [book, setBook] = useState({
-    _id: "688db7e956b9db8045543e81",
-    title: "The God of Small Things",
-    author: "Arundhati Roy",
-    year: 1997,
-    photo:
-      "https://m.media-amazon.com/images/I/91saO95VziL._UF1000,1000_QL80_.jpg",
-    createdAt: "2025-08-02T07:00:22.777Z",
-    __v: 0,
-    description:
-      "A Booker Prize-winning novel exploring family, caste, and forbidden love in Kerala.",
-  });
+  const [book, setBook] = useState();
   const { id } = useParams();
 
   const fetchBookDetails = async () => {
