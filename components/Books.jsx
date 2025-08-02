@@ -144,7 +144,9 @@ const Books = () => {
                 ) : (
                   <div className="flex justify-center gap-4">
                     <button
-                      onClick={() => deleteBook(book._id)}
+                      onClick={() =>
+                        (window.location.href = `/book/${book._id}`)
+                      }
                       className="text-blue-800 hover:text-blue-500 cursor-pointer"
                       title="View"
                     >

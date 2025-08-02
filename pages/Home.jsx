@@ -8,6 +8,7 @@ const Home = () => {
     title: "",
     author: "",
     year: "",
+    photo: "",
   });
 
   useEffect(() => {
@@ -146,6 +147,15 @@ const Home = () => {
               value={form.year}
               onChange={handleChange}
               placeholder="Year"
+              className="w-full mb-4 p-2 border rounded"
+            />
+
+            <input
+              type="text"
+              name="photo"
+              value={form.photo}
+              onChange={handleChange}
+              placeholder="Image URL"
               className="w-full mb-4 p-2 border rounded"
             />
 
