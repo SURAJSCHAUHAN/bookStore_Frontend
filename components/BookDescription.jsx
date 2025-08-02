@@ -3,10 +3,9 @@ import { useParams } from "react-router-dom";
 
 export const BookDescription = () => {
   const [book, setBook] = useState();
+  const { id } = useParams();
 
   const fetchBookDetails = async () => {
-    const { id } = useParams();
-
     try {
       const res = await fetch(
         `https://book-store-backend-suraj.vercel.app/api/books/get/${id}`,
@@ -28,7 +27,20 @@ export const BookDescription = () => {
 
   useEffect(() => {
     fetchBookDetails();
-  }, []);
+  }, [id]);
 
-  return <div>BookDescription</div>;
+  return (
+    <div>
+      {book ? (
+        <div>
+          <h1>{book.title}</h1>
+          <p>{book.author}</p>
+          <p>{book.year}</p>
+          <p>{book.description}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
 };
